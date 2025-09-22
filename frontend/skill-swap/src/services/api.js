@@ -1,5 +1,13 @@
 // API service for handling all backend communications
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
+const RAW_API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
+// Ensure base URL includes the /api prefix exactly once
+const API_BASE_URL = (() => {
+  const trimmed = RAW_API_BASE_URL.replace(/\/$/, '');
+  if (/\/api(\/)?$/.test(trimmed) || /\/(api)(\/|$)/.test(trimmed.split('://')[1] || '')) {
+    return trimmed;
+  }
+  return `${trimmed}/api`;
+})();
 
 class ApiService {
   constructor() {

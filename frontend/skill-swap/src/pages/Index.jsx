@@ -172,6 +172,15 @@ const AuthModal = ({ children, mode = 'login' }) => {
         {children}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[480px] p-0 overflow-hidden border-0 bg-gradient-to-br from-white to-gray-50">
+        <DialogTitle className="sr-only">
+          {currentTab === 'login' ? 'Sign In to SkillSwap' : 'Create SkillSwap Account'}
+        </DialogTitle>
+        <DialogDescription className="sr-only">
+          {currentTab === 'login' 
+            ? 'Enter your credentials to access your SkillSwap account'
+            : 'Fill out the form to create your new SkillSwap account'
+          }
+        </DialogDescription>
         <div className="relative">
           {/* Background decoration */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 opacity-60"></div>
